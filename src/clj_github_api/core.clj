@@ -1,4 +1,5 @@
 ;; A simple clojure app which gets the top 10 contributors of a github repository.
+;; Author: Jordan Chalupka
 (ns clj-github-api.core
   (require
    [clj-http.client :as http]
