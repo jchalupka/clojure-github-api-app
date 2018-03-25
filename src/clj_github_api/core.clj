@@ -4,9 +4,7 @@
   (require
    [clj-http.client :as http]
    [clj-json.core :as json]
-   [clojure.pprint :refer [print-table]]
-   [clojure.string :as string]
-   [clojure.tools.cli :refer [parse-opts]]))
+   [clojure.pprint :refer [print-table]]))
 
 ;; Creates a map for the contibutor
 (defn make-contrib
@@ -26,6 +24,10 @@
    :user-name user-name
    :num-commits num-commits})
 
+(defn add-user-url
+  [contrib]
+  (assoc contrib :user-url (format "https://github.com/%s/", (:user-name contrib))))
+
 ;; Gets the top contributors for a repository
 (defn get-top-contribs
   [repo]
@@ -39,16 +41,18 @@
          (sort-by :num-commits)
          (reverse)
          (map-indexed add-rank)
+         (map add-user-url)
          (take 10))))
 
-;; Command-Line-Interface Options
-(def cli-options
-  [["-r" "--repo REPO" "The Repository Name"
-    :default "redux/redux"
-    :validate [#(not (clojure.string/includes? % " ")) "The repository name should not contain any spaces."]] ;; TODO function to validate repo name exists.
-   :assoc-fn [#(get-top-contribs %)]
-   ["-h" "--help"]])
+(defn get-repo-url
+  [url]
+  (format "https://github.com/%s/", url))
+
+(defn run
+  [repo]
+  (do
+    (print (format "Getting Top 10 Contibutors for '%s' (%s)" repo (get-repo-url repo)))
+    ((comp print-table get-top-contribs) repo)))
 
 ;; Main
-(defn -main [& args]
-  (parse-opts args cli-options))
+(def -main run)
