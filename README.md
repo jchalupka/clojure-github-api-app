@@ -11,17 +11,20 @@ Usage:
 Example of output:
 
 ```
-| :rank |    :user-name | :num-commits |
-|-------+---------------+--------------|
-|     1 |        abarth |         1828 |
-|     2 |         Hixie |         1356 |
-|     3 |    HansMuller |          535 |
-|     4 |    devoncarew |          457 |
-|     5 |      cbracken |          394 |
-|     6 | jason-simmons |          313 |
-|     7 |    goderbauer |          279 |
-|     8 |      tvolkert |          224 |
-|     9 |       yjbanov |          222 |
-|    10 |      vlidholt |          209 |
+$> lein run 'facebook/react'
+Getting Top 10 Contibutors for 'facebook/react' (https://github.com/facebook/react/)
+
+| :rank |  :user-name | :num-commits |                       :user-url |
+|-------+-------------+--------------+---------------------------------|
+|     1 |  sophiebits |          832 |  https://github.com/sophiebits/ |
+|     2 |        zpao |          820 |        https://github.com/zpao/ |
+|     3 |     gaearon |          736 |     https://github.com/gaearon/ |
+|     4 | sebmarkbage |          481 | https://github.com/sebmarkbage/ |
+|     5 |     acdlite |          342 |     https://github.com/acdlite/ |
+|     6 |    petehunt |          205 |    https://github.com/petehunt/ |
+|     7 |     bvaughn |          205 |     https://github.com/bvaughn/ |
+|     8 |    chenglou |          152 |    https://github.com/chenglou/ |
+|     9 |       vjeux |          140 |       https://github.com/vjeux/ |
+|    10 |       jimfb |          116 |       https://github.com/jimfb/ |
 ```
 

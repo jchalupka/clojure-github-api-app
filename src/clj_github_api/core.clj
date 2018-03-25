@@ -51,7 +51,7 @@
 (defn run
   [repo]
   (do
-    (print (format "Getting Top 10 Contibutors for '%s' (%s)" repo (get-repo-url repo)))
+    (print (format "Getting Top 10 Contibutors for '%s' (%s)\n" repo (get-repo-url repo)))
     ((comp print-table get-top-contribs) repo)))
 
 ;; Main
