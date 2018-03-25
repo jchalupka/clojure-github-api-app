@@ -4,7 +4,9 @@
   (require
    [clj-http.client :as http]
    [clj-json.core :as json]
-   [clojure.pprint :refer [print-table]]))
+   [clojure.pprint :refer [print-table]]
+   [clojure.string :as string]
+   [clojure.tools.cli :refer [parse-opts]]))
 
 ;; Creates a map for the contibutor
 (defn make-contrib
@@ -39,5 +41,14 @@
          (map-indexed add-rank)
          (take 10))))
 
+;; Command-Line-Interface Options
+(def cli-options
+  [["-r" "--repo REPO" "The Repository Name"
+    :default "redux/redux"
+    :validate [#(not (clojure.string/includes? % " ")) "The repository name should not contain any spaces."]] ;; TODO function to validate repo name exists.
+   :assoc-fn [#(get-top-contribs %)]
+   ["-h" "--help"]])
+
 ;; Main
-(def -main (comp print-table get-top-contribs))
+(defn -main [& args]
+  (parse-opts args cli-options))

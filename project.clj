@@ -7,5 +7,6 @@
   [[org.clojure/clojure "1.8.0"]
    [clj-http "3.7.0"]
    [clj-json "0.5.3"]
-   [org.clojure/data.csv "0.1.4"]]
+   [org.clojure/data.csv "0.1.4"]
+   [org.clojure/tools.cli "0.3.5"]]
   :main clj-github-api.core)
