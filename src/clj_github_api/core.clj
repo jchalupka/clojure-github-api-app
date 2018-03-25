@@ -4,7 +4,8 @@
   (require
    [clj-http.client :as http]
    [clj-json.core :as json]
-   [clojure.pprint :refer [print-table]]))
+   [clojure.pprint :refer [print-table]])
+  (:gen-class))
 
 ;; Creates a map for the contibutor
 (defn make-contrib
